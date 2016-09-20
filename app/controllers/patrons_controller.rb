@@ -1,5 +1,6 @@
 class PatronsController < ApplicationController
   before_action :set_patron, only: [:show, :edit, :update, :destroy]
+    before_action :check_logged_in
 
   # GET /patrons
   # GET /patrons.json

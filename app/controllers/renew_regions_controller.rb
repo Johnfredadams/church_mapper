@@ -1,5 +1,6 @@
 class RenewRegionsController < ApplicationController
   before_action :set_renew_region, only: [:show, :edit, :update, :destroy]
+    before_action :check_logged_in
 
   # GET /renew_regions
   # GET /renew_regions.json

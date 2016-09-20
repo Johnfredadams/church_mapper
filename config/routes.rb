@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'map'
     end
+    resources :churches, shallow: true
   end
   resources :renew_regions
   resources :patrons

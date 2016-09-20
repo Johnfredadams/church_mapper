@@ -1,5 +1,6 @@
 class ChurchesController < ApplicationController
   before_action :set_church, only: [:show, :edit, :update, :destroy]
+  before_action :check_logged_in
 
   # GET /churches
   # GET /churches.json

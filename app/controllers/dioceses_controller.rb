@@ -1,5 +1,6 @@
 class DiocesesController < ApplicationController
   before_action :set_diocese, only: [:show, :edit, :update, :destroy]
+  before_action :check_logged_in
 
   # GET /dioceses
   # GET /dioceses.json

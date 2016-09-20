@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_logged_in
+  
   # GET /addresses
   # GET /addresses.json
   def index
