@@ -1,0 +1,1 @@
+json.array! @churches_people, partial: 'churches_people/churches_person', as: :churches_person

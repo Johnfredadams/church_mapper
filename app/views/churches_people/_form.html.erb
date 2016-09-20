@@ -1,0 +1,49 @@
+<%= form_for(@churches_person) do |f| %>
+  <% if @churches_person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@churches_person.errors.count, "error") %> prohibited this churches_person from being saved:</h2>
+
+      <ul>
+      <% @churches_person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :church_id %><br>
+    <%= f.number_field :church_id %>
+  </div>
+  <div class="field">
+    <%= f.label :person_id %><br>
+    <%= f.number_field :person_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date_year %><br>
+    <%= f.number_field :start_date_year %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date_month %><br>
+    <%= f.number_field :start_date_month %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date_day %><br>
+    <%= f.number_field :start_date_day %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date_year %><br>
+    <%= f.number_field :end_date_year %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date_month %><br>
+    <%= f.number_field :end_date_month %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date_day %><br>
+    <%= f.number_field :end_date_day %>
+  </div>
+  <div class="actions">
+    <%= f.submit class:"form-control" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  church_id: 1
+  person_id: 1
+  start_date_year: 1
+  start_date_month: 1
+  start_date_day: 1
+  end_date_year: 1
+  end_date_month: 1
+  end_date_day: 1
+
+two:
+  church_id: 1
+  person_id: 1
+  start_date_year: 1
+  start_date_month: 1
+  start_date_day: 1
+  end_date_year: 1
+  end_date_month: 1
+  end_date_day: 1

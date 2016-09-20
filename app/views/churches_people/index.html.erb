@@ -1,0 +1,40 @@
+
+<h1>Listing Churches People</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Church</th>
+      <th>Person</th>
+      <th>Start date year</th>
+      <th>Start date month</th>
+      <th>Start date day</th>
+      <th>End date year</th>
+      <th>End date month</th>
+      <th>End date day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @churches_people.each do |churches_person| %>
+      <tr>
+        <td><%= churches_person.church_id %></td>
+        <td><%= churches_person.person_id %></td>
+        <td><%= churches_person.start_date_year %></td>
+        <td><%= churches_person.start_date_month %></td>
+        <td><%= churches_person.start_date_day %></td>
+        <td><%= churches_person.end_date_year %></td>
+        <td><%= churches_person.end_date_month %></td>
+        <td><%= churches_person.end_date_day %></td>
+        <td><%= link_to 'Show', churches_person %></td>
+        <td><%= link_to 'Edit', edit_churches_person_path(churches_person) %></td>
+        <td><%= link_to 'Destroy', churches_person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Churches person', new_churches_person_path %>

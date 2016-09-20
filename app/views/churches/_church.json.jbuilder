@@ -1,0 +1,2 @@
+json.extract! church, :id, :name, :parish, :locality, :diocese, :postcode, :status, :description, :vacant, :start_month, :start_year, :incumbent_name, :incumbent_age, :incumbent_age_approx, :incumbent_start_month, :incumbent_start_year, :average_weekly_attendance, :number_of_clergy_employed, :number_of_staff, :funding, :cofe_status, :network, :created_at, :updated_at
+json.url church_url(church, format: :json)

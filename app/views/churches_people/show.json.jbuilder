@@ -1,0 +1,1 @@
+json.partial! "churches_people/churches_person", churches_person: @churches_person

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  encrypted_address: MyText
+  encrypted_postcode: MyString
+  encrypted_landline: MyString
+
+two:
+  encrypted_address: MyText
+  encrypted_postcode: MyString
+  encrypted_landline: MyString

@@ -1,0 +1,59 @@
+<style type="text/css" media="screen">
+#map-canvas {
+    width: 100%;
+    height: 600px;
+    border: 1px solid blue;
+}
+</style>
+<div id="map_loader">Load map</div>
+<div id="map-canvas"></div>
+<div id="map-container" />
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?&callback=activateMapLoader&key=<%= ENV['GOOGLE_BROWSER_API_KEY'] %>"></script>
+    <script>
+      function initialize() {
+         //reAlignStackedDivs();
+        var mapCanvas = document.getElementById('map-canvas');
+        $(mapCanvas).show();
+        var mapOptions = {
+          center: new google.maps.LatLng(51.424617,-0.225567),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+        var latlngbounds = new google.maps.LatLngBounds();
+        <% for location in @churches %>
+                    <% if location.renew_region %>
+                        var icon_url = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    <% else %>
+                       var icon_url
+                    <% end %>
+            var latlng = new google.maps.LatLng(<%= location.lat %>, <%= location.lng %>);
+                <%= "marker_#{location.id}" %> = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    label: '<%= location.name %>',
+                    icon: icon_url 
+                    }
+                );
+            latlngbounds.extend(latlng);
+            var <%= "infowindow_#{location.id}" %> = new google.maps.InfoWindow({
+                content: '<%= location.name %>, <%=location.locality %>, <%= location.postcode %>'
+            });
+            google.maps.event.addListener(<%= "marker_#{location.id}" %>, 'click', function() {
+              <%= "infowindow_#{location.id}" %>.open(map,<%= "marker_#{location.id}" %>);
+            });
+        
+        <% end %>
+        map.fitBounds(latlngbounds);    
+        
+      }
+      // google.maps.event.addDomListener(document.getElementById('map_loader'), 'click', initialize);
+      function activateMapLoader(){
+          $("#map_loader").click(function(){
+              initialize();
+              return false;
+          })
+          
+      }
+</script>

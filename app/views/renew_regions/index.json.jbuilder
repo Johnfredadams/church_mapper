@@ -1,0 +1,1 @@
+json.array! @renew_regions, partial: 'renew_regions/renew_region', as: :renew_region

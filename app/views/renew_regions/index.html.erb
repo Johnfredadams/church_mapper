@@ -1,0 +1,26 @@
+
+<h1>Listing Renew Regions</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @renew_regions.each do |renew_region| %>
+      <tr>
+        <td><%= renew_region.name %></td>
+        <td><%= link_to 'Show', renew_region %></td>
+        <td><%= link_to 'Edit', edit_renew_region_path(renew_region) %></td>
+        <td><%= link_to 'Destroy', renew_region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Renew region', new_renew_region_path %>

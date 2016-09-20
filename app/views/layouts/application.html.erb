@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Church Mapper</title>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.min.js?theme=white&tracking=1&thirdparty=1&scrolling=1&remember=90&privacyPage=http%3A%2F%2Fklemi.co%2Fprivacy"></script>
+    
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> 
+    <meta name="google-site-verification" content="<%= ENV["GOOGLE_SITE_VERIFICATION_2"]%>" />
+    <%= yield :head %>
+  </head>
+  <body>
+      <!--
+
+      //-->
+      <div id="flash" style="display:none;"></div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">    
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <%= render :partial => '/layouts/login' %>
+
+            <form action="application_submit" class="navbar-form navbar-right" method="get" accept-charset="utf-8">
+                <div class="form-group">
+                    <input type="text" name="global_search" value="" placeholder="Search..." id="global_search" class="form-control">
+                </div>
+            </form>
+            <ul class="nav navbar-nav">
+              
+              <li role="presentation">
+        		<%= link_to ("Church Mapper <span class='caret'></span>").html_safe , "#", {class: "dropdown-toggle", data: {toggle: "dropdown"}, role: "button", 'aria-haspopup': true, 'aria-expanded': false} %>
+                <ul class="dropdown-menu">
+                <li><%= link_to "Churches", churches_path %></li>
+                <li><%= link_to "Map", map_churches_path %></li>
+
+                <li><%= link_to "Renew Regions", renew_regions_path %></li>
+                <li><%= link_to "Dioceses", dioceses_path %></li>
+                <li><%= link_to "People", people_path %></li>
+                <li><%= link_to "Users", users_path %></li>
+                 </ul>
+             </li>
+             
+          </ul>
+
+</div>
+</div>
+</nav>
+    
+    <%= flash_messages  %> 
+    
+    <%= yield %>
+    
+    <div class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">&nbsp;</h4>
+          </div>
+          <div id="members-role-form-container" class="modal-body">
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+
+    </body>
+</html>

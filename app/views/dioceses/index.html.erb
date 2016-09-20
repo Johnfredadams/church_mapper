@@ -1,0 +1,28 @@
+
+<h1>Listing Dioceses</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Province</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dioceses.each do |diocese| %>
+      <tr>
+        <td><%= diocese.name %></td>
+        <td><%= diocese.province %></td>
+        <td><%= link_to 'Show', diocese %></td>
+        <td><%= link_to 'Edit', edit_diocese_path(diocese) %></td>
+        <td><%= link_to 'Destroy', diocese, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Diocese', new_diocese_path %>

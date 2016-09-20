@@ -1,0 +1,43 @@
+
+<p>
+  <strong>Church:</strong>
+  <%= @churches_person.church_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @churches_person.person_id %>
+</p>
+
+<p>
+  <strong>Start date year:</strong>
+  <%= @churches_person.start_date_year %>
+</p>
+
+<p>
+  <strong>Start date month:</strong>
+  <%= @churches_person.start_date_month %>
+</p>
+
+<p>
+  <strong>Start date day:</strong>
+  <%= @churches_person.start_date_day %>
+</p>
+
+<p>
+  <strong>End date year:</strong>
+  <%= @churches_person.end_date_year %>
+</p>
+
+<p>
+  <strong>End date month:</strong>
+  <%= @churches_person.end_date_month %>
+</p>
+
+<p>
+  <strong>End date day:</strong>
+  <%= @churches_person.end_date_day %>
+</p>
+
+<%= link_to 'Edit', edit_churches_person_path(@churches_person) %> |
+<%= link_to 'Back', churches_people_path %>

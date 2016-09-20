@@ -1,0 +1,1 @@
+json.partial! "renew_regions/renew_region", renew_region: @renew_region

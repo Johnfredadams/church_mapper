@@ -1,0 +1,13 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @patron.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @patron.description %>
+</p>
+
+<%= link_to 'Edit', edit_patron_path(@patron) %> |
+<%= link_to 'Back', patrons_path %>

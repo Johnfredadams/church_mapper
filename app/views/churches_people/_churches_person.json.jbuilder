@@ -1,0 +1,2 @@
+json.extract! churches_person, :id, :church_id, :person_id, :start_date_year, :start_date_month, :start_date_day, :end_date_year, :end_date_month, :end_date_day, :created_at, :updated_at
+json.url churches_person_url(churches_person, format: :json)

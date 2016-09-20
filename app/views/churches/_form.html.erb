@@ -1,0 +1,101 @@
+<%= form_for(@church) do |f| %>
+  <% if @church.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@church.errors.count, "error") %> prohibited this church from being saved:</h2>
+
+      <ul>
+      <% @church.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :parish %><br>
+    <%= f.text_field :parish, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :locality %><br>
+    <%= f.text_field :locality, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :diocese_id %><br>
+    <%= f.select :diocese_id, Diocese.all.collect{|d| [d.name, d.id]},{}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :renew_region_id %><br>
+    <%= f.select :renew_region_id, RenewRegion.all.collect{|r| [r.name, r.id]},{include_blank: true}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :postcode %><br>
+    <%= f.text_field :postcode, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :renew_status %><br>
+    <%= f.select :renew_status, ["Pioneering","Established","Secured"], {include_blank: true}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :vacant %><br>
+    <%= f.select :vacant,["incumbent in post","vacant","suspended"], {include_blank: true}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :start_month %><br>
+    <%= f.number_field :start_month, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :start_year %><br>
+    <%= f.number_field :start_year, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :incumbent_name %><br>
+    <%= f.text_field :incumbent_name, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :incumbent_age %><br>
+    <%= f.text_field :incumbent_age, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :incumbent_age_approx %><br>
+    <%= f.check_box :incumbent_age_approx %>
+  </div>
+  <div class="field">
+    <%= f.label :incumbent_start_month %><br>
+    <%= f.number_field :incumbent_start_month, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :incumbent_start_year %><br>
+    <%= f.number_field :incumbent_start_year, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :average_weekly_attendance %><br>
+    <%= f.number_field :average_weekly_attendance, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_clergy_employed %><br>
+    <%= f.number_field :number_of_clergy_employed, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_staff %><br>
+    <%= f.number_field :number_of_staff, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :funding %><br>
+    <%= f.text_field :funding, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :cofe_status %><br>
+    <%= f.select :cofe_status, ["Single Parish Church","Team Ministry","Proprietary Chapel","AMiE","Non Anglican"],{}, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "form-control" %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :encrypted_address %><br>
+    <%= f.text_area :encrypted_address %>
+  </div>
+  <div class="field">
+    <%= f.label :encrypted_postcode %><br>
+    <%= f.text_field :encrypted_postcode %>
+  </div>
+  <div class="field">
+    <%= f.label :encrypted_landline %><br>
+    <%= f.text_field :encrypted_landline %>
+  </div>
+  <div class="actions">
+    <%= f.submit class:"form-control" %>
+  </div>
+<% end %>

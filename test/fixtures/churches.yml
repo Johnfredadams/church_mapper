@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  parish: MyString
+  locality: MyString
+  diocese: MyString
+  postcode: MyString
+  status: MyString
+  description: MyText
+  vacant: MyString
+  start_month: 
+  start_year: 
+  incumbent_name: MyString
+  incumbent_age: 
+  incumbent_age_approx: false
+  incumbent_start_month: 1
+  incumbent_start_year: 1
+  average_weekly_attendance: 1
+  number_of_clergy_employed: 1
+  number_of_staff: 1
+  funding: MyString
+  cofe_status: MyString
+  network: MyString
+
+two:
+  name: MyString
+  parish: MyString
+  locality: MyString
+  diocese: MyString
+  postcode: MyString
+  status: MyString
+  description: MyText
+  vacant: MyString
+  start_month: 
+  start_year: 
+  incumbent_name: MyString
+  incumbent_age: 
+  incumbent_age_approx: false
+  incumbent_start_month: 1
+  incumbent_start_year: 1
+  average_weekly_attendance: 1
+  number_of_clergy_employed: 1
+  number_of_staff: 1
+  funding: MyString
+  cofe_status: MyString
+  network: MyString

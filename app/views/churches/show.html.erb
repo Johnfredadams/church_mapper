@@ -1,0 +1,121 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @church.name %>
+</p>
+
+<p>
+  <strong>Parish:</strong>
+  <%= @church.parish %>
+</p>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @church.locality %>
+</p>
+
+<p>
+  <strong>Diocese:</strong>
+  <%= @church.diocese.name %>
+</p>
+
+<p>
+  <strong>Renew Region:</strong>
+  <%= @church.renew_region.try(:name) %>
+</p>
+<p>
+  <strong>Postcode:</strong>
+  <%= @church.postcode %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @church.renew_status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @church.description %>
+</p>
+
+<p>
+  <strong>Vacant:</strong>
+  <%= @church.vacant %>
+</p>
+
+<p>
+  <strong>Start month:</strong>
+  <%= @church.start_month %>
+</p>
+
+<p>
+  <strong>Start year:</strong>
+  <%= @church.start_year %>
+</p>
+
+<p>
+  <strong>Incumbent name:</strong>
+  <%= @church.incumbent_name %>
+</p>
+
+<p>
+  <strong>Incumbent age:</strong>
+  <%= @church.incumbent_age %>
+</p>
+
+<p>
+  <strong>Incumbent age approx:</strong>
+  <%= @church.incumbent_age_approx %>
+</p>
+
+<p>
+  <strong>Incumbent start month:</strong>
+  <%= @church.incumbent_start_month %>
+</p>
+
+<p>
+  <strong>Incumbent start year:</strong>
+  <%= @church.incumbent_start_year %>
+</p>
+
+<p>
+  <strong>Average weekly attendance:</strong>
+  <%= @church.average_weekly_attendance %>
+</p>
+
+<p>
+  <strong>Number of clergy employed:</strong>
+  <%= @church.number_of_clergy_employed %>
+</p>
+
+<p>
+  <strong>Number of staff:</strong>
+  <%= @church.number_of_staff %>
+</p>
+
+<p>
+  <strong>Funding:</strong>
+  <%= @church.funding %>
+</p>
+
+<p>
+  <strong>Cofe status:</strong>
+  <%= @church.cofe_status %>
+</p>
+
+<p>
+  <strong>Network:</strong>
+  <%= @church.network %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @church.lng %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%= @church.lat %>
+</p>
+
+
+<%= link_to 'Edit', edit_church_path(@church) %> |
+<%= link_to 'Back', churches_path %>
