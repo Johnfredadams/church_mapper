@@ -28,10 +28,6 @@ class SessionsController < ApplicationController
         redirect_to root_path, notice: "Sorry, that email isn't on our system."
         
       end
-      origin = env["omniauth.origin"]
-      logger.warn("omniauth.origin:" + origin.to_s)
-
-      user = User.find(session[:user_id])    
   end
   
   def sign_in_as
