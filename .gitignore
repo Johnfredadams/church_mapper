@@ -19,4 +19,3 @@
 
 # and config files
 /config/local_env.yml
-/config/secrets.yml
