@@ -17,7 +17,7 @@
          <% end %>
    
    </li>
-   <% if current_user && current_user.is_super_admin? %>
+   <% if current_user && current_user %>
        <li><%= link_to content_tag(:span,"", class: "glyphicon glyphicon-cog"), "/settings/edit", class: "navbar-link", role: "button" %></li>
    <% end %>
  </ul>

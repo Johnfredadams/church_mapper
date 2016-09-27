@@ -15,6 +15,7 @@
       <tr>
         <td><%= diocese.name %></td>
         <td><%= diocese.province %></td>
+        <td><%= link_to 'Map', map_diocese_churches_path(diocese) %></td>
         <td><%= link_to 'Show', diocese %></td>
         <td><%= link_to 'Edit', edit_diocese_path(diocese) %></td>
         <td><%= link_to 'Destroy', diocese, method: :delete, data: { confirm: 'Are you sure?' } %></td>

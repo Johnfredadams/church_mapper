@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   resources :people
   resources :addresses
   resources :dioceses do
-    collection do
-      get 'map'
+    resources :churches, shallow: true do
+      collection do
+        get 'map'
+      end
     end
-    resources :churches, shallow: true
   end
   resources :renew_regions
   resources :patrons
