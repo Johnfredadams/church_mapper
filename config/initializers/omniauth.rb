@@ -2,7 +2,7 @@ OmniAuth.config.logger = Rails.logger
 
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV['GOOGLE_OAUTH2_ID'], ENV['GOOGLE_OAUTH2_SECRET'], {application_name: ENV['APPLICATION_NAME'], application_version: ENV['APPLICATION_VERSION'], scope: 'userinfo.email,userinfo.profile,calendar', access_type: 'online', prompt: 'select_account', redirect_uri: ENV["HTTPS_ROOT"] + "/auth/google_oauth2/callback",client_options: {ssl: {ca_file: Rails.root.join("cacert.pem").to_s}}}
+  provider :google_oauth2, ENV['GOOGLE_OAUTH2_ID'], ENV['GOOGLE_OAUTH2_SECRET'], {application_name: ENV['APPLICATION_NAME'], application_version: ENV['APPLICATION_VERSION'], scope: 'userinfo.email,userinfo.profile,calendar', access_type: 'online', prompt: 'select_account',client_options: {ssl: {ca_file: Rails.root.join("cacert.pem").to_s}}}
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
   provider :microsoft_live, ENV['MICROSOFT_LIVE_KEY'], ENV['MICROSOFT_LIVE_SECRET'], {application_name: ENV['APPLICATION_NAME'], application_version: ENV['APPLICATION_VERSION'], scope: 'wl.basic,wl.emails'}
   provider :windowslive, ENV['MICROSOFT_LIVE_KEY'], ENV['MICROSOFT_LIVE_SECRET'], {application_name: ENV['APPLICATION_NAME'], application_version: ENV['APPLICATION_VERSION'], scope: 'wl.basic,wl.emails'}
