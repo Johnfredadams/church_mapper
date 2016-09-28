@@ -1,13 +1,33 @@
 <style type="text/css" media="screen">
-#map-canvas {
+#map-container {
     width: 100%;
     height: 600px;
     border: 1px solid blue;
 }
+#map-controls, #map-canvas {
+    height: 100%;
+}
 </style>
 <div id="map_loader" class="btn btn-xs btn-primary">Load map</div>
-<div id="map-canvas"></div>
-<div id="map-container" />
+<div id="map-container" class="row">
+    <div id="map-controls" class="col-md-1">
+        <ul>
+            <li><h3>Renew</h3>
+                <ul>
+                    <h4>Status</h4>
+                    <li>Pioneering</li>
+                    <li>Established</li>
+                    <li>Secured</li>
+                </ul>
+            
+            </li>
+            <li><h3>Affiliation</h3></li>
+            <li><h3>Size</h3></li>
+        </ul>
+        
+    </div>
+    <div id="map-canvas" class="col-md-11" />
+</div>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?&callback=activateMapLoader&key=<%= ENV['GOOGLE_BROWSER_API_KEY'] %>"></script>
     <script>
