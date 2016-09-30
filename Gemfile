@@ -44,6 +44,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rails-erd'
 end
 
 gem 'google-api-client', '>= 0.9'
@@ -61,9 +62,12 @@ gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-boots
 # for geocoding using google
 gem 'geokit'
 gem 'exception_notification', :git => 'git://github.com/alanjds/exception_notification.git', :require => 'exception_notifier'
-gem "attr_encrypted", '~> 1.3.4'
-gem "encryptor", '~> 1.3.0'
+gem "attr_encrypted"
+gem "encryptor"
 gem 'bootstrap-wysihtml5-rails'
 # for tags
 gem 'acts-as-taggable-on'
-
+gem 'select2-rails'
+# for nested fields
+gem 'cocoon'
+# for visualising data

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Count type:</strong>
+  <%= @church_count.count_type %>
+</p>
+
+<p>
+  <strong>Count number:</strong>
+  <%= @church_count.count_number %>
+</p>
+
+<p>
+  <strong>Count year:</strong>
+  <%= @church_count.count_year %>
+</p>
+
+<p>
+  <strong>Count month:</strong>
+  <%= @church_count.count_month %>
+</p>
+
+<p>
+  <strong>Count day:</strong>
+  <%= @church_count.count_day %>
+</p>
+
+<p>
+  <strong>Count approx:</strong>
+  <%= @church_count.count_approx %>
+</p>
+
+<p>
+  <strong>Church:</strong>
+  <%= @church_count.church_id %>
+</p>
+
+<%= link_to 'Edit', edit_church_count_path(@church_count) %> |
+<%= link_to 'Back', church_counts_path %>

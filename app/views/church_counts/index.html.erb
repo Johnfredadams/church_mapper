@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Church Counts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Count type</th>
+      <th>Count number</th>
+      <th>Count year</th>
+      <th>Count month</th>
+      <th>Count day</th>
+      <th>Count approx</th>
+      <th>Church</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @church_counts.each do |church_count| %>
+      <tr>
+        <td><%= church_count.count_type %></td>
+        <td><%= church_count.count_number %></td>
+        <td><%= church_count.count_year %></td>
+        <td><%= church_count.count_month %></td>
+        <td><%= church_count.count_day %></td>
+        <td><%= church_count.count_approx %></td>
+        <td><%= church_count.church_id %></td>
+        <td><%= link_to 'Show', church_count %></td>
+        <td><%= link_to 'Edit', edit_church_count_path(church_count) %></td>
+        <td><%= link_to 'Destroy', church_count, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Church count', new_church_count_path %>

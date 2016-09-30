@@ -1,0 +1,1 @@
+json.partial! "church_counts/church_count", church_count: @church_count

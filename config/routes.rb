@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :addresses_people
+  resources :address_people
+  resources :church_counts
   resources :churches_people
   resources :people
   resources :addresses
@@ -6,6 +9,7 @@ Rails.application.routes.draw do
     resources :churches, shallow: true do
       collection do
         get 'map'
+        post 'import'
       end
     end
   end

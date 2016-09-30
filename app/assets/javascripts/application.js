@@ -18,3 +18,5 @@
     
 //= require bootstrap-wysihtml5
 //= require twitter/bootstrap
+//= require select2
+//= require cocoon

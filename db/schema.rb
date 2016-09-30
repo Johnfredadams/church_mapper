@@ -11,14 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920120852) do
+ActiveRecord::Schema.define(version: 20160930111704) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "encrypted_address"
     t.string   "encrypted_postcode"
     t.string   "encrypted_landline"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "encrypted_landline_iv"
+    t.string   "encrypted_postcode_iv"
+    t.string   "encrypted_addresss_iv"
+  end
+
+  create_table "addresses_people", force: :cascade do |t|
+    t.integer  "address_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "church_counts", force: :cascade do |t|
+    t.string   "count_type"
+    t.integer  "count_number"
+    t.integer  "count_year"
+    t.integer  "count_month"
+    t.integer  "count_day"
+    t.boolean  "count_approx"
+    t.integer  "church_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "age_group"
   end
 
   create_table "churches", force: :cascade do |t|
@@ -32,23 +55,33 @@ ActiveRecord::Schema.define(version: 20160920120852) do
     t.string   "vacant"
     t.integer  "start_month"
     t.integer  "start_year"
-    t.string   "incumbent_name"
-    t.integer  "incumbent_age"
     t.boolean  "incumbent_age_approx"
     t.integer  "incumbent_start_month"
     t.integer  "incumbent_start_year"
     t.integer  "average_weekly_attendance"
-    t.integer  "number_of_clergy_employed"
-    t.integer  "number_of_staff"
+    t.integer  "number_of_male_clergy_employed"
+    t.integer  "number_of_male_laity_employed"
     t.string   "funding"
     t.string   "cofe_status"
     t.string   "network"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.float    "lat"
     t.float    "lng"
     t.integer  "renew_region_id"
     t.integer  "diocese_id"
+    t.string   "house_of_bishops_declaration"
+    t.text     "house_of_bishops_declaration_other"
+    t.boolean  "diocesan_help_for_growth"
+    t.text     "diocesan_help_for_growth_comment"
+    t.boolean  "permission_for_mapping",             default: false
+    t.boolean  "permission_for_sharing",             default: false
+    t.boolean  "remove_me",                          default: false
+    t.integer  "renew_database_id"
+    t.integer  "number_of_female_clergy_employed"
+    t.integer  "number_of_female_laity_employed"
+    t.integer  "diocesan_funded_staff"
+    t.integer  "diocesan_funded_curates"
   end
 
   create_table "churches_patrons", force: :cascade do |t|
@@ -69,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160920120852) do
     t.integer  "end_date_day"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "position"
+    t.string   "church_position"
   end
 
   create_table "dioceses", force: :cascade do |t|
@@ -97,6 +130,10 @@ ActiveRecord::Schema.define(version: 20160920120852) do
     t.date     "renew_member_since"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "age"
+    t.boolean  "age_approx"
+    t.string   "encrypted_email_iv"
+    t.string   "encrypted_phone_iv"
   end
 
   create_table "renew_regions", force: :cascade do |t|
@@ -104,6 +141,33 @@ ActiveRecord::Schema.define(version: 20160920120852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["context"], name: "index_taggings_on_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id"
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type"
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     limit: 255, default: "", null: false

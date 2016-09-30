@@ -1,0 +1,28 @@
+<div class="form-group">
+  <%= f.label :count_type, "Type" %>
+  <%= f.select :count_type, ["Electoral Roll","Average Weekly Attendance"], {}, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :count_number, "Number" %>
+  <%= f.number_field :count_number, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :count_year, "Year" %>
+  <%= f.number_field :count_year, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :count_month, "Month" %>
+  <%= f.number_field :count_month, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :count_day, "Day" %>
+  <%= f.number_field :count_day, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :count_approx,"Approx." %>
+  <%= f.check_box :count_approx %>
+</div>
+<div class="form-group">
+  <%= f.label :age_group %>
+  <%= f.select :age_group, ["0-10","11-17","18-30","31-69","70+"],{include_blank: true}, class: "form-control" %>
+</div>

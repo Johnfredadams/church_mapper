@@ -1,0 +1,23 @@
+<%= form_for(@church_count) do |f| %>
+  <% if @church_count.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@church_count.errors.count, "error") %> prohibited this church_count from being saved:</h2>
+
+      <ul>
+      <% @church_count.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => 'church_count_fields', locals: {f: f} %>
+
+  <div class="field">
+    <%= f.label :church_id %><br>
+    <%= f.select :church_id, Church.all.collect{|c| [c.name, c.id]}, {}, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
     <tr>
       <th>Name</th>
       <th>Province</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -15,7 +15,9 @@
       <tr>
         <td><%= diocese.name %></td>
         <td><%= diocese.province %></td>
+        <td><%= link_to "Import", import_diocese_churches_path(diocese,spreadsheet_id: "1U97HAWrqgcVSavDnM2ylbHxsmjmLjUVI8NGFk1vDmf4", sheet_name: "Data collected 2016"), method: :post, data: {confirm: "Are you sure?"} %></td>
         <td><%= link_to 'Map', map_diocese_churches_path(diocese) %></td>
+        <td><%= link_to 'Churches', diocese_churches_path(diocese) %></td>
         <td><%= link_to 'Show', diocese %></td>
         <td><%= link_to 'Edit', edit_diocese_path(diocese) %></td>
         <td><%= link_to 'Destroy', diocese, method: :delete, data: { confirm: 'Are you sure?' } %></td>

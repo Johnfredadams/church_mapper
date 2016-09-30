@@ -1,0 +1,2 @@
+json.extract! church_count, :id, :count_type, :count_number, :count_year, :count_month, :count_day, :count_approx, :church_id, :created_at, :updated_at
+json.url church_count_url(church_count, format: :json)

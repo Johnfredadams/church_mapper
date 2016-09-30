@@ -1,0 +1,1 @@
+json.array! @church_counts, partial: 'church_counts/church_count', as: :church_count

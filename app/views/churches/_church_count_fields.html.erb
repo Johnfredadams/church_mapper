@@ -1,0 +1,3 @@
+<div class="church-count">  <%= render :partial => '/church_counts/church_count_fields', locals: {f: f} %> 
+ <%= link_to_remove_association('Remove', f, class: 'btn btn-danger pull-right', data: {confirm: "Are you sure?"}, wrapper_class: "church-count" ) %>
+</div>

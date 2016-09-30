@@ -1,3 +1,9 @@
+<style type="text/css" media="screen">
+.form-inline input[type='number'] {
+    width: 6em;
+}
+</style>
+
 <%= form_for(@church) do |f| %>
   <% if @church.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +16,9 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="col-md-8 row col-md-offset-2">
+<div class="col-md-6">
+    <h3>Basic Information</h3>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, class: "form-control" %>
@@ -36,17 +44,113 @@
     <%= f.text_field :postcode, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :renew_status %><br>
-    <%= f.select :renew_status, ["Pioneering","Established","Secured"], {include_blank: true}, class: "form-control" %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description, class: "form-control" %>
   </div>
+ </div>
+
+ <div class="col-md-6 col-offset-2">
+      <h3>Employment</h3>
   <div class="field">
-    <%= f.label :vacant %><br>
-    <%= f.select :vacant,["incumbent in post","vacant","suspended"], {include_blank: true}, class: "form-control" %>
+    <%= f.label :number_of_male_clergy_employed %><br>
+    <%= f.number_field :number_of_male_clergy_employed, class: "form-control" %>
   </div>
+  <div class="field">
+    <%= f.label :number_of_male_laity_employed %><br>
+    <%= f.number_field :number_of_male_laity_employed, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_female_clergy_employed %><br>
+    <%= f.number_field :number_of_female_clergy_employed, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_female_laity_employed %><br>
+    <%= f.number_field :number_of_female_laity_employed, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :diocesan_funded_staff %><br>
+    <%= f.number_field :diocesan_funded_staff, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :diocesan_funded_curates %><br>
+    <%= f.number_field :diocesan_funded_curates, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :funding %><br>
+    <%= f.text_field :funding, class: "form-control" %>
+  </div>
+</div>
+ 
+
+</div>
+
+
+<div class="col-md-8 row col-md-offset-2">
+  <div class="col-md-6">
+      <h3>Incumbent</h3>
+  <div class="field">
+    <%= f.label :vacant, "Status" %><br>
+    <%= f.select :vacant,["incumbent in post","vacant","suspended"], {include_blank: true}, class: "form-control" %>
+  </div> 
+  <% if @church.incumbent_churches_person %>
+      <%= f.fields_for :churches_people, [@church.incumbent_churches_person] do |churches_person|%>
+
+             <%= churches_person.fields_for :person do |incumbent| %>
+                <%= render 'person_fields', f: incumbent %>
+             <% end %>
+
+      <% end %>
+  <% else %>
+      No current incumbent registered. 
+      <div class="link-add-wrapper" style="padding-top: 1em;">
+        <%= link_to_add_association '+ Add Incumbent', f, :church_counts, data: {"association-insertion-method": "append", "association-insertion-node": ".church_counts"}, class: "btn btn-primary" %>
+      </div>
+  <% end %>
+  </div>
+
+    <div class="col-md-6">
+      <h3>Church Of England</h3>
+  <div class="field">
+    <%= f.label :cofe_status %><br>
+    <%= f.select :cofe_status, ["Single Parish Church","Team Ministry","Proprietary Chapel","AMiE","Non Anglican"],{include_blank: true}, class: "form-control" %>
+  </div>
+  <h3>House of Bishops Declaration</h3>
+  <div class="field">
+    <%= f.label :house_of_bishops_declaration %><br>
+    <%= f.select :house_of_bishops_declaration, ["Passed","In the process of passing","Passed by November 2017","PCC Unconvinced","PCC Unconcerned"],{include_blank:true}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :house_of_bishops_declaration_other, "Other (please specify)" %><br>
+    <%= f.text_field :house_of_bishops_declaration_other, class: "form-control" %>
+  </div>
+ 
+  <h3>Diocesan Help</h3>
+  <%= raw bootstrap_radio_buttons(form_object: f,method: :diocesan_help_for_growth,options_for_radio: [{name: "Helped by the Diocese", value: "1"},{name: "Not Helped by the Diocese", value: "0"}])%>
+  <div class="field">
+      <%= f.label :diocesan_help_for_growth_comment %>
+      <%= f.text_area :diocesan_help_for_growth_comment, class: "form-control" %>
+  </div>
+</div>
+</div>
+<div class="col-md-8 col-md-offset-2">
+
+  <h3>Growth</h3>
+  <div class="field">
+    <%= f.label :renew_status %><br>
+    <%= f.select :renew_status, ["Pioneering","Getting There","Established","Secured"], {include_blank: true}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :growth_indicator_list %><br>
+    <%= f.select :growth_indicator_list, ActsAsTaggableOn::Tag.most_used(30).collect{|t| t.name}, {},{multiple: true ,class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :growth_strategy_list %><br>
+    <%= f.select :growth_strategy_list, ActsAsTaggableOn::Tag.most_used(30).collect{|t| t.name},{}, {multiple: true ,class: "form-control"} %>
+  </div>
+
+
+  <h3>History</h3>
   <div class="field">
     <%= f.label :start_month %><br>
     <%= f.number_field :start_month, class: "form-control" %>
@@ -55,47 +159,47 @@
     <%= f.label :start_year %><br>
     <%= f.number_field :start_year, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :incumbent_name %><br>
-    <%= f.text_field :incumbent_name, class: "form-control" %>
+
+  <h4>Attendance Stats</h4>
+  <div class="church_counts form-inline"> 
+  <%= f.fields_for :church_counts do |church_count|%>
+      
+        <%= render 'church_count_fields', f: church_count %>
+
+  <% end %>
   </div>
-  <div class="field">
-    <%= f.label :incumbent_age %><br>
-    <%= f.text_field :incumbent_age, class: "form-control" %>
+  <div class="link-add-wrapper" style="padding-top: 1em;">
+    <%= link_to_add_association '+ Add Count', f, :church_counts, data: {"association-insertion-method": "append", "association-insertion-node": ".church_counts"}, class: "btn btn-primary" %>
+  </div>    
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+  <h3>Permission</h3>
+   <h4>Mapping</h4>
+   <%= raw bootstrap_radio_buttons(form_object: f,method: :permission_for_mapping,options_for_radio: [{name: "Mapping permission granted", value: "1"},{name: "Mapping permission not granted", value: "0"}])%>
+    <h4>Sharing</h4>
+    <%= raw bootstrap_radio_buttons(form_object: f,method: :permission_for_sharing,options_for_radio: [{name: "Sharing permission granted", value: "1"},{name: "Sharing permission not granted", value: "0"}])%>
+</div>
+
+  <div class="clearfix"></div>
+  <div class="actions pull-right">
+    <%= f.submit class: "btn btn-primary" %>
   </div>
-  <div class="field">
-    <%= f.label :incumbent_age_approx %><br>
-    <%= f.check_box :incumbent_age_approx %>
-  </div>
-  <div class="field">
-    <%= f.label :incumbent_start_month %><br>
-    <%= f.number_field :incumbent_start_month, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :incumbent_start_year %><br>
-    <%= f.number_field :incumbent_start_year, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :average_weekly_attendance %><br>
-    <%= f.number_field :average_weekly_attendance, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_clergy_employed %><br>
-    <%= f.number_field :number_of_clergy_employed, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_staff %><br>
-    <%= f.number_field :number_of_staff, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :funding %><br>
-    <%= f.text_field :funding, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :cofe_status %><br>
-    <%= f.select :cofe_status, ["Single Parish Church","Team Ministry","Proprietary Chapel","AMiE","Non Anglican"],{}, class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "form-control" %>
-  </div>
+  <div class="clearfix"></div>
 <% end %>
+
+<script type="text/javascript">
+$("#church_growth_indicator_list").select2({
+    theme: "bootstrap",
+    width: '100%',
+    tokenSeparators: [","],
+    tags: true,
+    placeholder: "Growth Indicators separated by comma"})
+$("#church_growth_strategy_list").select2({
+        width: '100%',
+        theme: "bootstrap",
+        tokenSeparators: [","],
+        tags: true,
+        placeholder: "Growth Strategies separated by comma"})
+</script>
+    
